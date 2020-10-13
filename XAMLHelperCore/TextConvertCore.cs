@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XAMLHelperTest
+namespace XAMLHelperCore
 {
-    public class Class1
+  public class TextConvertCore
+  {
+    public string ExtractStyle(string original)
     {
+      return null;
     }
+  }
 }

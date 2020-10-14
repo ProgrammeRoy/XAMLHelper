@@ -132,7 +132,35 @@ namespace XAMLHelperTest
 </Style>";
       Assert.Equal(expected, result);
     }
-  
 
+    [Fact]
+    public void TextBlock_WithNameAttribute()
+    {
+      // datos
+      var dato = @"<TextBlock  x:Name=""txtNombre"" />";
+
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = @"<Style TargetType=""TextBlock"">
+</Style>";
+      Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void TextBlock_WithAlternativeNameAttribute()
+    {
+      // datos
+      var dato = @"<TextBlock  Name=""txtNombre"" />";
+
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = @"<Style TargetType=""TextBlock"">
+</Style>";
+      Assert.Equal(expected, result);
+    }
   }
 }

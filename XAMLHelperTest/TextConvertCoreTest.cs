@@ -46,20 +46,20 @@ namespace XAMLHelperTest
 
       //probar
       var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"3\" /></Style>";
-      Assert.Equal(String.Empty, expected);
+      Assert.Equal(expected, result);
     }
 
     [Fact]
     public void GridControlEnclosing_WithOneParameter()
     {
       // datos
-      var dato = "<Grid Margin=\"3\"></Grid>";
+      var dato = "<Grid Margin=\"5\"></Grid>";
       // ejecutar
       var result = new TextConvertCore().ExtractStyle(dato);
 
       //probar
-      var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"3\" /></Style>";
-      Assert.Equal(String.Empty, expected);
+      var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"5\" /></Style>";
+      Assert.Equal(expected, result);
     }
   }
 }

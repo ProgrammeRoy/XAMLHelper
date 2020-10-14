@@ -24,6 +24,19 @@ namespace XAMLHelperTest
     }
 
     [Fact]
+    public void OnlyDataType_AnotherControlTest()
+    {
+      // datos
+      var dato = "<Text>";
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = "<Style TargetType=\"Text\"></Style>";
+      Assert.Equal(expected, result);
+    }
+
+    [Fact]
     public void OnlyDataTypeEnclosingTest()
     {
       // datos
@@ -37,7 +50,7 @@ namespace XAMLHelperTest
     }
 
     [Fact]
-    public void GridControl_WithOneParameter()
+    public void GridControl_WithOneAttributes()
     {
       // datos
       var dato = "<Grid Margin=\"3\">";
@@ -50,7 +63,7 @@ namespace XAMLHelperTest
     }
 
     [Fact]
-    public void GridControlEnclosing_WithOneParameter()
+    public void GridControlEnclosing_WithOneAttributes()
     {
       // datos
       var dato = "<Grid Margin=\"5\"></Grid>";
@@ -61,5 +74,19 @@ namespace XAMLHelperTest
       var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"5\" /></Style>";
       Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void GridControl_WithTwoAttributes()
+    {
+      // datos
+      var dato = "<Grid Margin=\"3\" Padding=\"2\">";
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"3\" /><Setter Property=\"Padding\" Value=\"2\" /></Style>";
+      Assert.Equal(expected, result);
+    }
+     
   }
 }

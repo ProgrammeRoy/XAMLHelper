@@ -58,10 +58,10 @@ namespace XAMLHelperCore
           string Value = content.Substring(startValue, endValue - startValue + 1);
 
           //Add Attrubutes and Values
-          textReturn += $"<Setter Property=\"{Attribute}\" Value=\"{Value}\" />";
+          textReturn += $"\r\n<Setter Property=\"{Attribute}\" Value=\"{Value}\" />";
         }
       }
-      return $"<Style TargetType=\"{Tag}\">"+textReturn+ "</Style>";
+      return $"<Style TargetType=\"{Tag}\">"+textReturn+ "\r\n</Style>";
 
     }
   }

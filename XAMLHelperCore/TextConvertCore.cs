@@ -8,9 +8,23 @@ namespace XAMLHelperCore
 {
   public class TextConvertCore
   {
-    public string ExtractStyle(string original)
+    public string ExtractStyle(string text)
     {
-      return null;
+      if (string.IsNullOrEmpty(text))
+        return "";
+    
+      if (text.Length - 2 > 1)
+      {
+        var start = text.IndexOf('<') + 1;
+        var end = text.IndexOf('>') - 1;
+        var onlyText = text.Substring(start, end);
+        return $"<Style TargetType=\"{onlyText}\"></Style>";
+      }
+      else
+      {
+        return "";
+      }
     }
+
   }
 }

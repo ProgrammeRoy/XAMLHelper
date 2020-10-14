@@ -20,7 +20,7 @@ namespace XAMLHelperTest
 
       //probar
       var expected = "<Style TargetType=\"Grid\"></Style>";
-      Assert.Equal(String.Empty, expected);
+      Assert.Equal(expected, result);
     }
     [Fact]
     public void OnlyDataTypeEnclosingTest()
@@ -32,7 +32,7 @@ namespace XAMLHelperTest
 
       //probar
       var expected = "<Style TargetType=\"Grid\"></Style>";
-      Assert.Equal(String.Empty, expected);
+      Assert.Equal(expected, result);
     }
   }
 }

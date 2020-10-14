@@ -8,7 +8,7 @@ namespace XAMLHelperCore
 {
   public class TextConvertCore
   {
-    public string ExtractStyle(string text)
+    public string ExtractStyle(string text, List<String> exceptionsAttributes = null)
     {
       if (string.IsNullOrEmpty(text))
         return "";
@@ -45,6 +45,9 @@ namespace XAMLHelperCore
           }
           int endAttribute = i - 1;
           string Attribute = content.Substring(startAttribute, endAttribute - startAttribute + 1);
+          
+          if (exceptionsAttributes != null && exceptionsAttributes.Contains(Attribute))
+            break;
 
           //Get Value
           int endValue = -1;

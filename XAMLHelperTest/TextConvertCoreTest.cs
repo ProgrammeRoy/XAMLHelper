@@ -140,7 +140,7 @@ namespace XAMLHelperTest
       var dato = @"<TextBlock  x:Name=""txtNombre"" />";
 
       // ejecutar
-      var result = new TextConvertCore().ExtractStyle(dato);
+      var result = new TextConvertCore().ExtractStyle(dato,new List<string>() {"x:Name"});
 
       //probar
       var expected = @"<Style TargetType=""TextBlock"">
@@ -155,7 +155,7 @@ namespace XAMLHelperTest
       var dato = @"<TextBlock  Name=""txtNombre"" />";
 
       // ejecutar
-      var result = new TextConvertCore().ExtractStyle(dato);
+      var result = new TextConvertCore().ExtractStyle(dato, new List<string>() {"Name"});
 
       //probar
       var expected = @"<Style TargetType=""TextBlock"">

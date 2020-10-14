@@ -22,25 +22,53 @@ namespace XAMLHelperCore
 
       var spacePosition = content.IndexOf(" ");
       var equalPosition = content.IndexOf("=");
-      if ( spacePosition == -1 || equalPosition == -1)
+      if (spacePosition == -1 || equalPosition == -1)
         return $"<Style TargetType=\"{content}\"></Style>";
 
+      //Get TAG Name
       var startTag = 0;
       var endTag = spacePosition - 1;
       var Tag = content.Substring(startTag, endTag - startTag + 1);
 
-      var startAttribute = spacePosition + 1;
-      var endAttribute = equalPosition - 1;
-      var Attribute = content.Substring(startAttribute, endAttribute - startAttribute + 1);
+      string textReturn = "";
+      for (int i = 0; i < content.Length; i++)
+      {
+        if (content[i] == '=')
+        {
+          //Get Attribute
+          int startAttribute = -1;
+          int recorreAttribute = i - 1;
+          while (content[recorreAttribute] != ' ')
+          {
+            startAttribute = recorreAttribute;
+            recorreAttribute--;
+          }
+          int endAttribute = i - 1;
+          string Attribute = content.Substring(startAttribute, endAttribute - startAttribute + 1);
 
-      var startValue = content.IndexOf("\"") + 1;
-      var endValue = content.IndexOf("\"", startValue + 1) - 1;
+          //Get Value
+          int endValue = -1;
+          int recorreValue = i + 2;
+          while (content[recorreValue] != '\"')
+          {
+            endValue = recorreValue;
+            recorreValue++;
+          }
+          int startValue = i + 2;
+          string Value = content.Substring(startValue, endValue - startValue + 1);
 
-      var Value = content.Substring(startValue, endValue - startValue + 1);
-
-      return $"<Style TargetType=\"{Tag}\"><Setter Property=\"{Attribute}\" Value=\"{Value}\" /></Style>";
+          //Add Attrubutes and Values
+          textReturn += $"<Setter Property=\"{Attribute}\" Value=\"{Value}\" />";
+        }
+      }
+      return $"<Style TargetType=\"{Tag}\">"+textReturn+ "</Style>";
 
     }
+  }
 
+  class AttributeAndValue
+  {
+    public string Attribute { get; set; }
+    public string Value { get; set; }
   }
 }

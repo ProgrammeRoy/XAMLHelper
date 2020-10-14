@@ -87,6 +87,37 @@ namespace XAMLHelperTest
       var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"3\" /><Setter Property=\"Padding\" Value=\"2\" /></Style>";
       Assert.Equal(expected, result);
     }
-     
+
+    [Fact]
+    public void GridControl_WithTwoAttributes_example2()
+    {
+      // datos
+      var dato = "<Grid Margin=\"3\" Padding=\"2\" Head=\"hola\">";
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = "<Style TargetType=\"Grid\"><Setter Property=\"Margin\" Value=\"3\" /><Setter Property=\"Padding\" Value=\"2\" /><Setter Property=\"Head\" Value=\"hola\" /></Style>";
+      Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void TextBlock_With4Attributes_WithExtraceSpace()
+    {
+      // datos
+      var dato = @"<TextBlock
+      Height=""24""
+      Margin=""64,0,0,0""
+      VerticalAlignment=""Top"" />";
+
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato);
+
+      //probar
+      var expected = @"<Style TargetType=""TextBlock""><Setter Property=""Height"" Value=""24"" /><Setter Property=""Margin"" Value=""64,0,0,0"" /><Setter Property=""VerticalAlignment"" Value=""Top"" /></Style>";
+      Assert.Equal(expected, result);
+    }
+  
+
   }
 }

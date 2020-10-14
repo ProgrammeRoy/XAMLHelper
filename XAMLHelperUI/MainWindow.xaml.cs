@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XAMLHelperCore;
 
 namespace XAMLHelperUI
 {
@@ -23,6 +24,43 @@ namespace XAMLHelperUI
     public MainWindow()
     {
       InitializeComponent();
+    }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+      try
+      {
+        ExtractStyle();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+    }
+
+    private void btnConvert_Click(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        ExtractStyle();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+    }
+
+    private void ExtractStyle()
+    {
+      var content = txtOrigen.Text;
+      if (String.IsNullOrEmpty(content))
+      {
+        txtDestino.Text = "";
+        return;
+      }
+ 
+      var result = new TextConvertCore().ExtractStyle(content);
+      txtDestino.Text = result;
     }
   }
 }

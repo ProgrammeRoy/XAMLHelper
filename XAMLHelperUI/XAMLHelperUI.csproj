@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XAMLHelperCore\XAMLHelperCore.csproj">
+      <Project>{e8f8d331-0110-4b9d-9e25-03b66de86084}</Project>
+      <Name>XAMLHelperCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

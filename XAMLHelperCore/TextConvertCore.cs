@@ -55,7 +55,7 @@ namespace XAMLHelperCore
           string Attribute = content.Substring(startAttribute, endAttribute - startAttribute + 1);
           
           if (exceptionsAttributes != null && exceptionsAttributes.Contains(Attribute))
-            break;
+            continue;
 
           //Get Value
           int endValue = -1;

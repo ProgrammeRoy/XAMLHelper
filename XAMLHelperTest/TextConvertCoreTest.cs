@@ -168,6 +168,7 @@ namespace XAMLHelperTest
     {
       // datos
       var dato = @"<Button
+Name=""casa"" 
       Grid.Row=""1""
       Grid.Column=""1""
     
@@ -176,7 +177,7 @@ namespace XAMLHelperTest
 VerticalAlignment=""Top"" />";
 
       // ejecutar
-      var result = new TextConvertCore().ExtractStyle(dato, new List<string>() { "Name" });
+      var result = new TextConvertCore().ExtractStyle(dato);
 
       //probar
       var expected = @"<Style TargetType=""Button"">

@@ -24,29 +24,42 @@ namespace XAMLHelperUI
     public MainWindow()
     {
       InitializeComponent();
+      lblError.Visibility = Visibility.Hidden;
+    }
+
+    private void CleanError()
+    {
+      lblError.Visibility = Visibility.Hidden;
+    }
+    private void ShowErrorError(string message)
+    {
+      lblError.Visibility = Visibility.Visible;
+      lblError.Text = message;
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
+      CleanError();
       try
       {
         ExtractStyle();
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.Message);
+        ShowErrorError(ex.Message);
       }
     }
 
     private void btnConvert_Click(object sender, RoutedEventArgs e)
     {
+      CleanError();
       try
       {
         ExtractStyle();
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.Message);
+        ShowErrorError(ex.Message);
       }
     }
 
@@ -58,7 +71,7 @@ namespace XAMLHelperUI
         txtDestino.Text = "";
         return;
       }
- 
+
       var result = new TextConvertCore().ExtractStyle(content);
       txtDestino.Text = result;
     }

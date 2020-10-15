@@ -10,11 +10,11 @@
   Height="450"
   mc:Ignorable="d">
   <Window.Resources>
-<Style TargetType="TextBlock">
-  <Setter Property="Height" Value="24" />
-  <Setter Property="Margin" Value="64,0,0,0" />
-  <Setter Property="VerticalAlignment" Value="Top" />
-</Style>
+    <Style TargetType="TextBlock">
+      <Setter Property="Height" Value="24" />
+      <Setter Property="Margin" Value="64,0,0,0" />
+      <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
   </Window.Resources>
   <Grid>
     <Grid.ColumnDefinitions>
@@ -23,7 +23,7 @@
     </Grid.ColumnDefinitions>
     <TextBox
       x:Name="txtOrigen"
-      Margin="0,24,0,0"
+      Margin="0,35,0,0"
       AcceptsReturn="True"
       TextChanged="TextBox_TextChanged"
       TextWrapping="Wrap"
@@ -31,21 +31,22 @@
     <TextBox
       x:Name="txtDestino"
       Grid.Column="1"
-      Margin="0,24,0,0"
+      Margin="0,35,0,0"
       AcceptsReturn="True"
       TextWrapping="Wrap"
       VerticalScrollBarVisibility="Visible" />
     <Button
       x:Name="btnConvert"
       Width="64"
-      Height="20"
+      Height="35"
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Click="btnConvert_Click"
       Content="convert" />
     <TextBlock
+      x:Name="lblError"
       Grid.ColumnSpan="2"
-      Height="24"
+      Height="35"
       Margin="64,0,0,0"
       VerticalAlignment="Top"
       Background="#FFFD5555"

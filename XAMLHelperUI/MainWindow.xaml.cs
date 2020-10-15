@@ -72,7 +72,12 @@ namespace XAMLHelperUI
         return;
       }
 
-      var result = new TextConvertCore().ExtractStyle(content);
+      var result = new TextConvertCore().ExtractStyle(content, new List<string>()
+      {
+        "x:Name",
+        "Name",
+        "ItemsSource"
+      });
       txtDestino.Text = result;
     }
   }

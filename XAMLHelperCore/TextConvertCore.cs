@@ -19,6 +19,9 @@ namespace XAMLHelperCore
       var start = text.IndexOf('<') + 1;
       var end = text.IndexOf('>') - 1;
       var content = text.Substring(start, end).Trim();
+      
+      //Clean
+      content = content.Replace("\r\n", " ");
 
       var spacePosition = content.IndexOf(" ");
       var equalPosition = content.IndexOf("=");
@@ -29,6 +32,11 @@ namespace XAMLHelperCore
       var startTag = 0;
       var endTag = spacePosition - 1;
       var Tag = content.Substring(startTag, endTag - startTag + 1);
+      
+      //if ())
+      //{
+      //  Tag = Tag.Substring(0, Tag.IndexOf(@"\r\n"));
+      //}
 
       string textReturn = "";
       for (int i = 0; i < content.Length; i++)
@@ -52,7 +60,7 @@ namespace XAMLHelperCore
           //Get Value
           int endValue = -1;
           int recorreValue = i + 2;
-          while (content[recorreValue] != '\"')
+          while (content[recorreValue] != '"')
           {
             endValue = recorreValue;
             recorreValue++;

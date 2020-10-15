@@ -162,5 +162,29 @@ namespace XAMLHelperTest
 </Style>";
       Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void Button_WithNextLineNameAttribute()
+    {
+      // datos
+      var dato = @"<Button
+      Grid.Row=""1""
+      Grid.Column=""1""
+    
+
+
+VerticalAlignment=""Top"" />";
+
+      // ejecutar
+      var result = new TextConvertCore().ExtractStyle(dato, new List<string>() { "Name" });
+
+      //probar
+      var expected = @"<Style TargetType=""Button"">
+<Setter Property=""Grid.Row"" Value=""1"" />
+<Setter Property=""Grid.Column"" Value=""1"" />
+<Setter Property=""VerticalAlignment"" Value=""Top"" />
+</Style>";
+      Assert.Equal(expected, result);
+    }
   }
 }

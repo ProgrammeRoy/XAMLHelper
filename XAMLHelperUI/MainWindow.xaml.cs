@@ -76,7 +76,12 @@ namespace XAMLHelperUI
       {
         "x:Name",
         "Name",
-        "ItemsSource"
+        "ItemsSource",
+        "Width",
+        "Height",
+        "Margin",
+        "HorizontalAlignment",
+        "VerticalAlignment"
       });
       txtDestino.Text = result;
     }
